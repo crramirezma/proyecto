@@ -29,4 +29,19 @@ public class Cliente extends Persona {
     public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
+    
+    //funciones redundantes pero necesarias
+    
+    @Override
+    public String getNombre(){
+        return this.nombre;
+    }
+    public String getTelefono(){
+        return this.cellphone;
+    }
+    @Override
+    public int getId(){
+        return this.id;
+    }
+    
 }

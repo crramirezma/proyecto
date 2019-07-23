@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
+import javax.swing.JOptionPane;
 
 /*
 / Declaramos los botones
@@ -175,15 +176,15 @@ import javafx.scene.text.Font;
 public class ClienteController extends Controlador {
 
     @FXML
-    private TableView<?> tablaPersonas;
+    private TableView<Cliente> tablaPersonas;
     @FXML
-    private TableColumn<?, ?> nombreCL;
+    private TableColumn<Cliente, String> nombreCL;
     @FXML
-    private TableColumn<?, ?> celularCL;
+    private TableColumn<Cliente, String> celularCL;
     @FXML
-    private TableColumn<?, ?> idCL;
+    private TableColumn<Cliente, Integer> idCL;
     @FXML
-    private TableColumn<?, ?> calificacionCL;
+    private TableColumn<Cliente, Integer> calificacionCL;
     @FXML
     private Font x1;
     @FXML
@@ -210,14 +211,53 @@ public class ClienteController extends Controlador {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("hola");
+        this.nombreCL.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        this.celularCL.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        this.idCL.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.calificacionCL.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
     }
 
     @FXML
     private void aniadir(ActionEvent event) {
+        int j=0;
+        //aqui se guardan los datos que se encuentran en los textfield y  se cargan a un cliente, de hay se carga a los arraylist
+        Cliente cliente;
+        int id=Integer.parseInt(this.idTF.getText());
+        String nombre=this.nombreTF.getText();
+        String cel=this.celularTF.getText();
+        
+        //evaluar si algun dato es nulo o no esta escrito
+        if(this.idTF.getText().equals("")||this.nombreTF.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Faltan datos","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            //evaluar si el cliente existe
+            if(this.getClientes().size()>1){
+                for(int i=0;i<this.getClientes().size();i++){
+                if(id==this.getClientes().get(id).getId()){
+                    JOptionPane.showMessageDialog(null,"Cliente ya existe","ERROR",JOptionPane.ERROR_MESSAGE);
+                    i=this.getClientes().size();
+                    this.idTF.setText("");
+                    j=1;
+                    }
+                }
+            }
+            if(j==0){
+                cliente=new Cliente(nombre, cel,id);
+                this.tablaPersonas.getItems().add(cliente);
+                this.tienda.agregarCliente(nombre, cel, id);
+            }else{
+                JOptionPane.showMessageDialog(null,"No se pudo crear el cliente","ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
+        
     }
 
     @FXML
     private void modificar(ActionEvent event) {
+        
+        
+        JOptionPane.showMessageDialog(null,"Para observar los cambios porfavor regresar a principal y volver a entrar","Message",JOptionPane.WARNING_MESSAGE);
     }
 
     @FXML

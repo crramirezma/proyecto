@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication4.VistaController">
+   <children>
+      <HBox prefHeight="118.0" prefWidth="601.0">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="30.0" />
+            <VBox prefHeight="100.0" prefWidth="208.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="19.0" prefWidth="187.0" text="Venta hecha por:" textFill="#0fff00">
+                           <font>
+                              <Font name="Bauhaus 93" size="21.0" />
+                           </font>
+                        </Label>
+                     </children></HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lbEmpleado" alignment="CENTER" prefHeight="19.0" prefWidth="187.0" textFill="#0fff00">
+                           <font>
+                              <Font name="Arial" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="txCliente" text="Id. del cliente" />
+                        <Button fx:id="btEscCliente" mnemonicParsing="false" onAction="#accEscCliente" text="Escoger" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="30.0" />
+            <VBox prefHeight="100.0" prefWidth="390.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="390.0" text="Ventas" textFill="#04a10e">
+                     <font>
+                        <Font name="Bauhaus 93" size="24.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="60.0" prefWidth="376.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="65.0" prefWidth="149.0">
+                           <children>
+                              <TextField fx:id="txRef" text="nombre del producto" />
+                              <VBox prefHeight="7.0" prefWidth="137.0" />
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="txCantidad" prefHeight="25.0" prefWidth="82.0" text="Cantidad" />
+                                    <Button fx:id="btEscoger" mnemonicParsing="false" onAction="#accEscoger" text="Escoger" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="65.0" prefWidth="72.0" />
+                        <DatePicker fx:id="date" />
+                        <VBox prefHeight="65.0" prefWidth="28.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox prefHeight="8.0" prefWidth="601.0" />
+      <TableView fx:id="table" prefHeight="259.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="tbProduct" prefWidth="135.0" text="Producto" />
+          <TableColumn fx:id="tbCantidad" minWidth="4.0" prefWidth="91.0" text="Cantidad" />
+            <TableColumn fx:id="tbReferencia" prefWidth="134.0" text="Referencia" />
+            <TableColumn fx:id="tbPrecio" prefWidth="111.0" text="Precio c/u" />
+            <TableColumn fx:id="tbPtotal" prefWidth="128.0" text="Precio total" />
+        </columns>
+      </TableView>
+      <HBox prefHeight="44.0" prefWidth="601.0">
+         <children>
+            <Button fx:id="btGenerar" mnemonicParsing="false" onAction="#accGenerar" prefHeight="25.0" prefWidth="135.0" text="Generar factura" />
+            <VBox prefHeight="37.0" prefWidth="228.0" />
+            <Button fx:id="btTotal" mnemonicParsing="false" onAction="#accTotal" prefHeight="25.0" prefWidth="112.0" text="Total" />
+            <Label fx:id="total" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="120.0">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="25.0" prefWidth="601.0" />
+      <Hyperlink fx:id="hpReturn" onAction="#accReturn" prefHeight="23.0" prefWidth="86.0" text="Regresar" />
+   </children>
+</VBox>

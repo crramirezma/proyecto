@@ -37,7 +37,19 @@ public class Empleado extends Persona{
     public void setHorastrabajadas(double horastrabajadas) {
         this.horastrabajadas = horastrabajadas;
     }
-    
+    //funciones redundantes
+    @Override
+    public String getNombre(){
+       return this.nombre; 
+    }
+    public String getTelefono(){
+        return this.cellphone;
+    }
+    @Override
+    public int getId(){
+        return this.id;
+        
+    }
     
     
 

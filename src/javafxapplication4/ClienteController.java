@@ -1,5 +1,6 @@
 package javafxapplication4;
 import Code.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -8,13 +9,17 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /*
@@ -194,15 +199,9 @@ public class ClienteController extends Controlador {
     @FXML
     private TextField idTF;
     @FXML
-    private TextField calificacionTF;
-    @FXML
     private Button aniadirBT;
     @FXML
-    private Button modificarBT;
-    @FXML
     private Button eliminarBT;
-    @FXML
-    private Button nuevoBT;
     @FXML
     private Button btGuardar;
     @FXML
@@ -215,6 +214,11 @@ public class ClienteController extends Controlador {
         this.celularCL.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         this.idCL.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.calificacionCL.setCellValueFactory(new PropertyValueFactory<>("calificacion"));
+        if(this.getClientes().size()>0){
+            for(int i=0;i<this.getClientes().size();i++){    
+                this.tablaPersonas.getItems().add(this.getClientes().get(i));
+            }
+        }
     }
 
     @FXML
@@ -231,16 +235,17 @@ public class ClienteController extends Controlador {
             JOptionPane.showMessageDialog(null,"Faltan datos","ERROR",JOptionPane.ERROR_MESSAGE);
         }else{
             //evaluar si el cliente existe
-            if(this.getClientes().size()>1){
+            if(this.getClientes().size()>0){
                 for(int i=0;i<this.getClientes().size();i++){
-                if(id==this.getClientes().get(id).getId()){
-                    JOptionPane.showMessageDialog(null,"Cliente ya existe","ERROR",JOptionPane.ERROR_MESSAGE);
-                    i=this.getClientes().size();
-                    this.idTF.setText("");
-                    j=1;
+                    if(id==this.getClientes().get(i).getId()){
+                        JOptionPane.showMessageDialog(null,"Cliente ya existe","ERROR",JOptionPane.ERROR_MESSAGE);
+                        i=this.getClientes().size();
+                        this.idTF.setText("");
+                        j=1;
                     }
                 }
             }
+            //cargar los datos a el tableView
             if(j==0){
                 cliente=new Cliente(nombre, cel,id);
                 this.tablaPersonas.getItems().add(cliente);
@@ -248,28 +253,26 @@ public class ClienteController extends Controlador {
             }else{
                 JOptionPane.showMessageDialog(null,"No se pudo crear el cliente","ERROR",JOptionPane.ERROR_MESSAGE);
             }
-        }
-        
-        
-    }
-
-    @FXML
-    private void modificar(ActionEvent event) {
-        
-        
-        JOptionPane.showMessageDialog(null,"Para observar los cambios porfavor regresar a principal y volver a entrar","Message",JOptionPane.WARNING_MESSAGE);
+        }  
     }
 
     @FXML
     private void eliminar(ActionEvent event) {
-    }
-
-    @FXML
-    private void nuevo(ActionEvent event) {
+        //ESTE SI NI IDEA DE COMO HACERLO
     }
 
     @FXML
     private void btGuardar(ActionEvent event) {
+    }
+
+    @FXML
+    private void accReturn(ActionEvent event) throws IOException {
+        Parent root= FXMLLoader.load(getClass().getResource("Principal.fxml"));
+        Singleton singleton=Singleton.getSingleton();
+        Stage stage=singleton.getStage();
+        Scene scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     

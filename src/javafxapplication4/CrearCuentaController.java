@@ -103,7 +103,7 @@ public class CrearCuentaController extends Controlador {
             for(i=0;i<this.getEmpleados().size()&&j==0;i++){
                 if(this.getEmpleados().get(i).getId()==Integer.parseInt(txAdmin.getText())){
                     
-                    getTienda().agregarEmpleado(nombre, telefono, id, cargo);
+                    tienda.agregarEmpleado(nombre, telefono, id, cargo);
                     JOptionPane.showMessageDialog(null,"usuario agregado","ERROR",JOptionPane.PLAIN_MESSAGE);
                     System.out.println("creado");
                     j=1;

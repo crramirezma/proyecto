@@ -5,6 +5,7 @@
  */
 package javafxapplication4;
 
+import Code.Empleado;
 import Code.Singleton;
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +18,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -44,13 +48,32 @@ public class EmpleadosController extends Controlador {
     private Button btGuardar;
     @FXML
     private Font x11;
+    @FXML
+    private TableView<Empleado> table;
+    @FXML
+    private TableColumn<Empleado, String> tbNombre;
+    @FXML
+    private TableColumn<Empleado, Integer> tbCedula;
+    @FXML
+    private TableColumn<Empleado, String> tbTelefono;
+    @FXML
+    private TableColumn<Empleado, String> tbCargo;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.tbNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        this.tbCedula.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.tbTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        this.tbCargo.setCellValueFactory(new PropertyValueFactory<>("cargo"));
+        if(this.getEmpleados().size()>0){
+            for(int i=0;i<this.getEmpleados().size();i++){    
+                this.table.getItems().add(this.getEmpleados().get(i));
+            }
+        }
+        
     }    
 
     @FXML

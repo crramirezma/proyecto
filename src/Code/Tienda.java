@@ -161,19 +161,18 @@ public class Tienda {
     
     public void comprarProducto(int referencia,int cantidad){
         for(Persona p:personas){
-                if(p instanceof Proovedor){
-                    for(Producto producto:((Proovedor)p).ofrece){
-                        if(producto.getReferencia()==referencia){
-                            String tipo=("Compraproducto");
-                            int valor=((producto.getPreciocompra())*cantidad);
-                            this.capital-=(producto.getPreciocompra()*cantidad);
-                            Pago npago=new Pago(tipo,valor);
-                            this.pagos.add(npago);
+            if(p instanceof Proovedor){
+                for(Producto producto:((Proovedor)p).ofrece){
+                    if(producto.getReferencia()==referencia){
+                        String tipo=("Compraproducto");
+                        int valor=((producto.getPreciocompra())*cantidad);
+                        this.capital-=(producto.getPreciocompra()*cantidad);
+                        Pago npago=new Pago(tipo,valor);
+                        this.pagos.add(npago);
                     }
                 }
-        }
-    }
-        
+            }
+        }   
     }
         
     

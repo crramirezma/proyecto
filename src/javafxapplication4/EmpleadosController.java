@@ -81,7 +81,13 @@ public class EmpleadosController extends Controlador {
     }
 
     @FXML
-    private void accEliminar(ActionEvent event) {
+    private void accEliminar(ActionEvent event) throws IOException {
+        Parent root= FXMLLoader.load(getClass().getResource("EliminarEmpleado.fxml"));
+        Singleton singleton=Singleton.getSingleton();
+        Stage stage=singleton.getStage();
+        Scene scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

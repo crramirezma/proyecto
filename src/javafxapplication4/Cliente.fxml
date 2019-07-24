@@ -44,8 +44,18 @@
             <TextField fx:id="celularTF" layoutX="13.0" layoutY="114.0" prefHeight="26.0" prefWidth="239.0" />
             <TextField fx:id="idTF" layoutX="14.0" layoutY="181.0" prefHeight="26.0" prefWidth="239.0" />
             <Button fx:id="aniadirBT" font="$x1" layoutX="16.0" layoutY="241.0" mnemonicParsing="false" onAction="#aniadir" prefHeight="26.0" prefWidth="234.0" text="Añadir" />
-            <Button fx:id="eliminarBT" font="$x1" layoutX="17.0" layoutY="302.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="26.0" prefWidth="234.0" text="Eliminar" />
+            <Button fx:id="eliminarBT" font="$x1" layoutX="15.0" layoutY="359.0" mnemonicParsing="false" onAction="#accEliminar" prefHeight="26.0" prefWidth="234.0" text="Eliminar" />
                   <Hyperlink layoutX="192.0" layoutY="458.0" onAction="#accReturn" text="Regresar" />
+                  <Label layoutX="21.0" layoutY="300.0" text="Eliminar cliente">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" fx:id="x12" />
+                     </font>
+                  </Label>
+                  <Button layoutX="17.0" layoutY="321.0" mnemonicParsing="false" onAction="#accSel" prefHeight="26.0" prefWidth="234.0" text="Seleccionar">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" fx:id="x13" />
+                     </font>
+                  </Button>
           </children>
         </AnchorPane>
       </items>

@@ -80,6 +80,7 @@ public class CrearCuentaController extends Controlador {
 
     @FXML
     private void accCrear(ActionEvent event) {
+        int k=0;
         String nombre=this.txNombre.getText();
         int id=Integer.parseInt(this.txId.getText());
         String cargo=this.cBox.getSelectionModel().getSelectedItem();
@@ -90,6 +91,7 @@ public class CrearCuentaController extends Controlador {
                 txId.clear();
                 JOptionPane.showMessageDialog(null,"Contraseña y/o correo repetido","ERROR",JOptionPane.ERROR_MESSAGE);
                 i=this.getEmpleados().size();
+                k=1;
             }
         }
         if(txId.getText().equals("")||txId.getId().equals("")||this.cBox.getSelectionModel().getSelectedItem().equals("")){
@@ -97,7 +99,7 @@ public class CrearCuentaController extends Controlador {
         }
         if(txAdmin.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Falta la contraseña de admin","ERROR",JOptionPane.ERROR_MESSAGE);
-        }else{
+        }else if(k==0){
             int i;
             int j=0;
             for(i=0;i<this.getEmpleados().size()&&j==0;i++){
@@ -114,6 +116,8 @@ public class CrearCuentaController extends Controlador {
                 JOptionPane.showMessageDialog(null,"No existe Adinistrador con esa cuenta","ERROR",JOptionPane.ERROR_MESSAGE);
             }
             
+        }else{
+            JOptionPane.showMessageDialog(null,"No se pudo crear la cuenta","ERROR",JOptionPane.ERROR_MESSAGE);
         }
         
     }

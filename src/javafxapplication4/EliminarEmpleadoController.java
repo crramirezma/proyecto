@@ -70,10 +70,15 @@ public class EliminarEmpleadoController extends Controlador {
         if(getEmpleados().size()>0){
             for(int i=0;i<getEmpleados().size();i++){
                 if(getEmpleados().get(i).getId()==Integer.parseInt(this.txId.getText())){
+                    for(int k=0;k<tienda.getPersonas().size();k++){
+                        if(tienda.getPersonas().get(k).equals(getEmpleados().get(i))){
+                            ArrayList<Persona>personas=this.tienda.getPersonas();
+                            personas.remove(k);
+                            this.tienda.setPersonas(personas);
+                            JOptionPane.showMessageDialog(null,"Usuario eliminado","ERROR",JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
                     
-                    ArrayList<Persona>personas=this.tienda.getPersonas();
-                    personas.remove(i);
-                    this.tienda.setPersonas(personas);
                     i=getEmpleados().size();
                     j=1;
                 }

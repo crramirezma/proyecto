@@ -2,6 +2,7 @@ package javafxapplication4;
 import Code.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -206,6 +207,10 @@ public class ClienteController extends Controlador {
     private Button btGuardar;
     @FXML
     private Font x11;
+    @FXML
+    private Font x12;
+    @FXML
+    private Font x13;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -256,10 +261,6 @@ public class ClienteController extends Controlador {
         }  
     }
 
-    @FXML
-    private void eliminar(ActionEvent event) {
-        //ESTE SI NI IDEA DE COMO HACERLO
-    }
 
     @FXML
     private void btGuardar(ActionEvent event) {
@@ -275,6 +276,46 @@ public class ClienteController extends Controlador {
         stage.show();
     }
 
-    
+    @FXML
+    private void accEliminar(ActionEvent event) {
+        int j=0;
+        if(getClientes().size()>0){
+            for(int i=0;i<getClientes().size();i++){
+                if(getClientes().get(i).getId()==Integer.parseInt(this.idTF.getText())){
+                    for(int k=0;k<tienda.getPersonas().size();k++){
+                        if(tienda.getPersonas().get(k).equals(getClientes().get(i))){
+                            ArrayList<Persona>personas=this.tienda.getPersonas();
+                            personas.remove(k);
+                            this.tienda.setPersonas(personas);
+                            JOptionPane.showMessageDialog(null,"Usuario eliminado","ERROR",JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    
+                    i=getClientes().size();
+                    j=1;
+                }
+            }
+        }
+        if(j==0){
+            JOptionPane.showMessageDialog(null,"no se pudo eliminar el empleado","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    @FXML
+    private void accSel(ActionEvent event) {
+        int j=0;
+        if(getClientes().size()>0){
+            for(int i=0;i<getClientes().size();i++){
+                if(getClientes().get(i).getId()==Integer.parseInt(this.idTF.getText())){
+                    JOptionPane.showMessageDialog(null,"El cliente a eliminar es: "+getClientes().get(i).getNombre(),"ERROR",JOptionPane.ERROR_MESSAGE);
+                    
+                    i=getClientes().size();
+                    j=1;
+                }
+            }
+        }if(j==0){
+            JOptionPane.showMessageDialog(null,"No se encontro el usuario","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
 

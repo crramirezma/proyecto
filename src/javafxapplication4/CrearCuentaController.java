@@ -109,6 +109,8 @@ public class CrearCuentaController extends Controlador {
                     JOptionPane.showMessageDialog(null,"usuario agregado","ERROR",JOptionPane.PLAIN_MESSAGE);
                     System.out.println("creado");
                     j=1;
+                    
+                    
                 }
                     
             }

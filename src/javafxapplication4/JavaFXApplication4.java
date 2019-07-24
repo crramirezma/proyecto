@@ -55,7 +55,7 @@ public class JavaFXApplication4 extends Application {
         tienda.agregarProductoVenta(20,001,"mango");
         tienda.agregarProductoVenta(20, 002, "mangoso");
         tienda.agregarEmpleado("Marcos", "3118814540", 1000832655, "Administrador");
-        tienda.agregarCliente("carlos", "000", 12243648);
+        tienda.agregarCliente("carlos", "000", 123456);
         
         Parent root = FXMLLoader.load(getClass().getResource("Inicio.fxml"));
         Singleton singleton=Singleton.getSingleton();

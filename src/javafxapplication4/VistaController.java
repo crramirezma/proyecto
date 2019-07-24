@@ -103,11 +103,15 @@ public class VistaController extends Controlador {
     private void accEscCliente(ActionEvent event) {
         
         int j=0;
-        for(int i=0;i<getClientes().size();i++){
-            if(this.txCliente.getText().equals(getClientes().get(i).getNombre())){
-                cliente=getClientes().get(i);
-                j=1;
-                i=getClientes().size();
+        if(getClientes().size()>0){
+            for(int i=0;i<getClientes().size();i++){
+                if(Integer.parseInt(this.txCliente.getText())==getClientes().get(i).getId()){
+                    cliente=getClientes().get(i);
+                    setCliente(cliente);
+                    j=1;
+                    i=getClientes().size();
+                    JOptionPane.showMessageDialog(null,"Cliente escogido"+this.cliente.getNombre(),"Correcto",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         }
         if(j==0){
